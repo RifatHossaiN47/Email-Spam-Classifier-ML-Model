@@ -2,22 +2,26 @@ import streamlit as st
 import pickle
 import string
 import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
+
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
 ps = PorterStemmer()
 tfidf = pickle.load(open('vectorizer.pkl','rb'))
 model = pickle.load(open('model1.pkl','rb'))
 
-
+def stopword():
+    return stopwords.words('english')
+swords = stopword()
 def preprocess(text):
   y = []
   text = text.lower()
   text = nltk.word_tokenize(text)
   for i in text:
     if i.isalnum():
-      if i not in stopwords.words("english") and i not in string.punctuation:
+      if i not in swords and i not in string.punctuation:
         y.append(ps.stem(i))
   return " ".join(y)
 
