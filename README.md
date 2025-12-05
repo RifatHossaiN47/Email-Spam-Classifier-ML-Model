@@ -90,6 +90,7 @@ Email-Spam-Classifier/
 ├── vectorizer.pkl                  # TF-IDF vectorizer
 ├── requirements.txt                # Python dependencies
 ├── nltk.txt                        # NLTK data requirements
+├── spam.csv                        # Dataset file to train models
 └── README.md                       # Project documentation
 ```
 
